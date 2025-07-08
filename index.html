@@ -4,33 +4,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZYNEO | شركة برمجيات</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
     body {
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .dark-mode {
-      background-color: #121212;
-      color: white;
+      background-color: #0d0d0d;
+      color: #f5f5f5;
+      font-family: 'Cairo', sans-serif;
     }
     .navbar {
       background-color: #000;
     }
     .navbar-dark .navbar-nav .nav-link {
-      color: white;
+      color: #f5f5f5;
+    }
+    .navbar-dark .navbar-nav .nav-link:hover {
+      color: #0f0;
     }
     .section-title {
       border-bottom: 2px solid #0f0;
       display: inline-block;
       margin-bottom: 20px;
     }
-    .toggle-btn {
-      cursor: pointer;
+    .btn-custom {
+      background-color: #0f0;
+      color: #000;
+      border: none;
+    }
+    .btn-custom:hover {
+      background-color: #0c0;
+    }
+    a {
+      color: #0f0;
+    }
+    footer {
+      background-color: #111;
     }
   </style>
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top animate__animated animate__fadeInDown">
     <div class="container">
       <a class="navbar-brand" href="#">ZYNEO</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -44,30 +57,30 @@
           <li class="nav-item"><a class="nav-link" href="#portfolio">أعمالنا</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
         </ul>
-        <span class="ms-3 toggle-btn" onclick="toggleTheme()">🌓</span>
       </div>
     </div>
-  </nav>  <!-- Hero Section -->  <section id="home" class="text-center py-5">
+  </nav>  <!-- Hero Section -->  <section id="home" class="text-center py-5 animate__animated animate__zoomIn">
     <div class="container">
       <h1 class="display-4">مرحبًا بك في ZYNEO</h1>
       <p class="lead">شركة برمجيات احترافية متخصصة في بناء الحلول الرقمية</p>
+      <a href="#contact" class="btn btn-custom mt-3 animate__animated animate__pulse animate__infinite">تواصل معنا</a>
     </div>
-  </section>  <!-- About Section -->  <section id="about" class="py-5 bg-light">
+  </section>  <!-- About Section -->  <section id="about" class="py-5 bg-dark animate__animated animate__fadeInRight">
     <div class="container">
       <h2 class="section-title">من نحن</h2>
       <p>ZYNEO هي شركة ناشئة يقودها فريق شغوف من المطورين والمصممين، نقدم حلول برمجية مبتكرة ومواقع احترافية تساعد عملاءنا على النجاح.</p>
     </div>
-  </section>  <!-- Services Section -->  <section id="services" class="py-5">
+  </section>  <!-- Services Section -->  <section id="services" class="py-5 animate__animated animate__fadeInLeft">
     <div class="container">
       <h2 class="section-title">خدماتنا</h2>
       <p>قيد التطوير...</p>
     </div>
-  </section>  <!-- Portfolio Section -->  <section id="portfolio" class="py-5 bg-light">
+  </section>  <!-- Portfolio Section -->  <section id="portfolio" class="py-5 bg-dark animate__animated animate__fadeInUp">
     <div class="container">
       <h2 class="section-title">أعمالنا</h2>
       <p>قريبًا سنعرض مشاريعنا المميزة في هذا القسم.</p>
     </div>
-  </section>  <!-- Contact Section -->  <section id="contact" class="py-5">
+  </section>  <!-- Contact Section -->  <section id="contact" class="py-5 animate__animated animate__fadeIn">
     <div class="container">
       <h2 class="section-title">تواصل معنا</h2>
       <ul>
@@ -77,11 +90,7 @@
         <li>📘 فيسبوك: <a href="https://facebook.com/" target="_blank">ZYNEO</a></li>
       </ul>
     </div>
-  </section>  <!-- Footer -->  <footer class="text-center py-3 bg-dark text-light">
+  </section>  <!-- Footer -->  <footer class="text-center py-3 text-light">
     <p>© 2025 ZYNEO. جميع الحقوق محفوظة.</p>
-  </footer>  <script>
-    function toggleTheme() {
-      document.body.classList.toggle("dark-mode");
-    }
-  </script>  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script></body>
+  </footer>  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script></body>
 </html>
