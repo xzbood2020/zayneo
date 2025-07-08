@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZYNEO | شركة برمجيات</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+    .navbar {
+      background-color: #000;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+      color: white;
+    }
+    .section-title {
+      border-bottom: 2px solid #0f0;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .toggle-btn {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ZYNEO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">خدماتنا</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">أعمالنا</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+        </ul>
+        <span class="ms-3 toggle-btn" onclick="toggleTheme()">🌓</span>
+      </div>
+    </div>
+  </nav>  <!-- Hero Section -->  <section id="home" class="text-center py-5">
+    <div class="container">
+      <h1 class="display-4">مرحبًا بك في ZYNEO</h1>
+      <p class="lead">شركة برمجيات احترافية متخصصة في بناء الحلول الرقمية</p>
+    </div>
+  </section>  <!-- About Section -->  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">من نحن</h2>
+      <p>ZYNEO هي شركة ناشئة يقودها فريق شغوف من المطورين والمصممين، نقدم حلول برمجية مبتكرة ومواقع احترافية تساعد عملاءنا على النجاح.</p>
+    </div>
+  </section>  <!-- Services Section -->  <section id="services" class="py-5">
+    <div class="container">
+      <h2 class="section-title">خدماتنا</h2>
+      <p>قيد التطوير...</p>
+    </div>
+  </section>  <!-- Portfolio Section -->  <section id="portfolio" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">أعمالنا</h2>
+      <p>قريبًا سنعرض مشاريعنا المميزة في هذا القسم.</p>
+    </div>
+  </section>  <!-- Contact Section -->  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="section-title">تواصل معنا</h2>
+      <ul>
+        <li>📧 البريد الإلكتروني: zyneocompany@gmail.com</li>
+        <li>📱 واتساب: <a href="https://wa.me/" target="_blank">اضغط هنا</a></li>
+        <li>📷 انستغرام: <a href="https://instagram.com/" target="_blank">@zyneo</a></li>
+        <li>📘 فيسبوك: <a href="https://facebook.com/" target="_blank">ZYNEO</a></li>
+      </ul>
+    </div>
+  </section>  <!-- Footer -->  <footer class="text-center py-3 bg-dark text-light">
+    <p>© 2025 ZYNEO. جميع الحقوق محفوظة.</p>
+  </footer>  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script></body>
+</html>
