@@ -1,68 +1,112 @@
-import { useState } from "react"; import { Globe, BookOpen, Moon, MessageCircle } from "lucide-react";
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hadith & Azkar</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="container nav__row">
+      <div class="brand">🕌 <span id="brand">Hadith & Azkar</span></div>
+      <div class="nav__controls">
+        <select id="lang" class="select">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="id">Indonesia</option>
+          <option value="ur">اردو</option>
+        </select>
+        <button id="theme" class="btn btn--ghost" aria-label="toggle theme">🌙</button>
+      </div>
+    </div>
+  </nav>
 
-export default function IslamicSite() { const [lang, setLang] = useState("ar"); const [dark, setDark] = useState(false); const [messages, setMessages] = useState([]); const [input, setInput] = useState("");
-
-const translations = { ar: { home: "الرئيسية", hadith: "الأحاديث", azkar: "الأذكار", dua: "الأدعية", faq: "الأسئلة الشائعة", bot: "المساعد الديني", welcome: "مرحباً بك في موقع الأحاديث والأذكار", ask: "اسأل البوت..." }, en: { home: "Home", hadith: "Hadith", azkar: "Azkar", dua: "Dua", faq: "FAQ", bot: "Islamic Bot", welcome: "Welcome to Hadith & Azkar Website", ask: "Ask the bot..." } };
-
-const t = translations[lang];
-
-const handleSend = () => { if (!input) return; const newMsg = { from: "user", text: input }; setMessages([...messages, newMsg, { from: "bot", text: "سيتم إضافة الذكاء الاصطناعي هنا للرد عليك." }]); setInput(""); };
-
-return ( <div className={${dark ? "bg-gray-900 text-white" : "bg-white text-gray-900"} min-h-screen transition}> {/* Navbar */} <nav className="flex justify-between items-center px-6 py-4 shadow-md sticky top-0 bg-green-600 text-white"> <h1 className="font-bold text-xl">🕌 Hadith & Azkar</h1> <div className="flex gap-4 items-center"> <button onClick={() => setLang(lang === "ar" ? "en" : "ar")} className="flex items-center gap-1"> <Globe size={18} /> {lang.toUpperCase()} </button> <button onClick={() => setDark(!dark)}><Moon size={18} /></button> </div> </nav>
-
-{/* Hero Section */}
-  <header className="text-center py-16 bg-gradient-to-r from-green-500 to-green-700 text-white">
-    <h2 className="text-3xl font-bold mb-4">{t.welcome}</h2>
-    <p className="opacity-80">{lang === "ar" ? "ابحث عن حديث، اقرأ الأذكار، أو اسأل المساعد الديني." : "Search Hadith, read Azkar, or ask the Islamic bot."}</p>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container hero__inner">
+      <h1 id="welcome" class="hero__title">مرحباً بك في موقع الأحاديث والأذكار</h1>
+      <p class="hero__subtitle">ابحث عن حديث، اقرأ الأذكار، أو اسأل المساعد الديني.</p>
+      <div class="search">
+        <input id="search" class="input" placeholder="ابحث في الأحاديث، الأذكار أو الأدعية..." />
+        <button id="btnSearch" class="btn">🔎</button>
+      </div>
+    </div>
   </header>
 
-  {/* Sections */}
-  <section className="grid md:grid-cols-3 gap-6 p-6">
-    <div className="rounded-2xl shadow-md p-6 bg-green-50">
-      <BookOpen className="mb-2 text-green-600" />
-      <h3 className="font-semibold text-lg">{t.hadith}</h3>
-      <p className="text-sm">{lang === "ar" ? "ابحث في الأحاديث الصحيحة." : "Search authentic Hadith."}</p>
-    </div>
-    <div className="rounded-2xl shadow-md p-6 bg-green-50">
-      <BookOpen className="mb-2 text-green-600" />
-      <h3 className="font-semibold text-lg">{t.azkar}</h3>
-      <p className="text-sm">{lang === "ar" ? "أذكار الصباح والمساء." : "Morning & Evening Azkar."}</p>
-    </div>
-    <div className="rounded-2xl shadow-md p-6 bg-green-50">
-      <BookOpen className="mb-2 text-green-600" />
-      <h3 className="font-semibold text-lg">{t.dua}</h3>
-      <p className="text-sm">{lang === "ar" ? "أدعية مأثورة." : "Authentic Dua."}</p>
-    </div>
-  </section>
-
-  {/* Chatbot */}
-  <section className="p-6">
-    <h3 className="font-bold text-xl mb-4 flex items-center gap-2"><MessageCircle /> {t.bot}</h3>
-    <div className="border rounded-2xl p-4 max-w-xl mx-auto h-80 overflow-y-auto bg-gray-50">
-      {messages.map((msg, i) => (
-        <div key={i} className={`my-2 ${msg.from === "user" ? "text-right" : "text-left"}`}>
-          <span className={`inline-block px-3 py-2 rounded-2xl ${msg.from === "user" ? "bg-green-600 text-white" : "bg-gray-300 text-black"}`}>
-            {msg.text}
-          </span>
+  <main class="container">
+    <!-- Feature Cards -->
+    <section class="grid">
+      <a href="#hadith" class="card">
+        <div class="card__icon">📖</div>
+        <div>
+          <h3 id="nav_hadith" class="card__title">الأحاديث</h3>
+          <p class="muted">ابحث في الأحاديث الصحيحة.</p>
         </div>
-      ))}
-    </div>
-    <div className="flex gap-2 mt-4 max-w-xl mx-auto">
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder={t.ask}
-        className="flex-1 border rounded-xl px-3 py-2"
-      />
-      <button onClick={handleSend} className="bg-green-600 text-white px-4 rounded-xl">➤</button>
-    </div>
-  </section>
+      </a>
+      <a href="#azkar" class="card">
+        <div class="card__icon">🕊️</div>
+        <div>
+          <h3 id="nav_azkar" class="card__title">الأذكار</h3>
+          <p class="muted">أذكار الصباح والمساء.</p>
+        </div>
+      </a>
+      <a href="#dua" class="card">
+        <div class="card__icon">🙏</div>
+        <div>
+          <h3 id="nav_dua" class="card__title">الأدعية</h3>
+          <p class="muted">أدعية مأثورة.</p>
+        </div>
+      </a>
+    </section>
 
-  {/* Footer */}
-  <footer className="text-center py-6 mt-10 bg-green-600 text-white">
-    <p>© 2025 Hadith & Azkar | {lang === "ar" ? "جميع الحقوق محفوظة" : "All rights reserved"}</p>
+    <!-- Hadith -->
+    <section id="hadith" class="section">
+      <h2 id="hadith_title" class="section__title">الأحاديث</h2>
+      <div id="hadithList" class="stack"></div>
+    </section>
+
+    <!-- Azkar -->
+    <section id="azkar" class="section">
+      <div class="section__head">
+        <h2 id="azkar_title" class="section__title">الأذكار</h2>
+        <div class="chips">
+          <button class="chip" data-tag="morning" title="الصباح">🌅</button>
+          <button class="chip" data-tag="evening" title="المساء">🌇</button>
+          <button class="chip" data-tag="after_prayer" title="بعد الصلاة">🕌</button>
+          <button class="chip" data-tag="sleep" title="النوم">🌙</button>
+        </div>
+      </div>
+      <div id="azkarList" class="stack"></div>
+    </section>
+
+    <!-- Dua -->
+    <section id="dua" class="section">
+      <h2 id="dua_title" class="section__title">الأدعية</h2>
+      <div id="duaList" class="stack"></div>
+    </section>
+
+    <!-- Bot -->
+    <section id="bot" class="section">
+      <h2 id="bot_title" class="section__title">المساعد الديني</h2>
+      <div id="chatBox" class="chat"></div>
+      <div class="chat__input">
+        <input id="question" class="input" placeholder="اكتب سؤالك..." />
+        <button id="send" class="btn">إرسال</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="brand_2">Hadith & Azkar</span> — 2025
   </footer>
-</div>
 
-); }
-
+  <script src="app.js"></script>
+</body>
+</html>
