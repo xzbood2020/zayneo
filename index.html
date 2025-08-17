@@ -1,44 +1,68 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WeatherNow | الطقس الآن</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-</head>
-<body>
-  <div class="controls">
-    <button onclick="toggleLanguage()">🌐 <span id="langBtn">English</span></button>
-    <button onclick="toggleMode()">🌓 <span id="modeBtn">الوضع الليلي</span></button>
-  </div>
+import { useState } from "react"; import { Globe, BookOpen, Moon, MessageCircle } from "lucide-react";
 
-  <div class="container" data-aos="fade-up">
-    <h1 id="title">🌦️ WeatherNow</h1>
+export default function IslamicSite() { const [lang, setLang] = useState("ar"); const [dark, setDark] = useState(false); const [messages, setMessages] = useState([]); const [input, setInput] = useState("");
 
-    <div class="search-box">
-      <input type="text" id="cityInput" placeholder="ادخل اسم المدينة" />
-      <button onclick="getWeather()" id="searchBtn">عرض الطقس</button>
+const translations = { ar: { home: "الرئيسية", hadith: "الأحاديث", azkar: "الأذكار", dua: "الأدعية", faq: "الأسئلة الشائعة", bot: "المساعد الديني", welcome: "مرحباً بك في موقع الأحاديث والأذكار", ask: "اسأل البوت..." }, en: { home: "Home", hadith: "Hadith", azkar: "Azkar", dua: "Dua", faq: "FAQ", bot: "Islamic Bot", welcome: "Welcome to Hadith & Azkar Website", ask: "Ask the bot..." } };
+
+const t = translations[lang];
+
+const handleSend = () => { if (!input) return; const newMsg = { from: "user", text: input }; setMessages([...messages, newMsg, { from: "bot", text: "سيتم إضافة الذكاء الاصطناعي هنا للرد عليك." }]); setInput(""); };
+
+return ( <div className={${dark ? "bg-gray-900 text-white" : "bg-white text-gray-900"} min-h-screen transition}> {/* Navbar */} <nav className="flex justify-between items-center px-6 py-4 shadow-md sticky top-0 bg-green-600 text-white"> <h1 className="font-bold text-xl">🕌 Hadith & Azkar</h1> <div className="flex gap-4 items-center"> <button onClick={() => setLang(lang === "ar" ? "en" : "ar")} className="flex items-center gap-1"> <Globe size={18} /> {lang.toUpperCase()} </button> <button onClick={() => setDark(!dark)}><Moon size={18} /></button> </div> </nav>
+
+{/* Hero Section */}
+  <header className="text-center py-16 bg-gradient-to-r from-green-500 to-green-700 text-white">
+    <h2 className="text-3xl font-bold mb-4">{t.welcome}</h2>
+    <p className="opacity-80">{lang === "ar" ? "ابحث عن حديث، اقرأ الأذكار، أو اسأل المساعد الديني." : "Search Hadith, read Azkar, or ask the Islamic bot."}</p>
+  </header>
+
+  {/* Sections */}
+  <section className="grid md:grid-cols-3 gap-6 p-6">
+    <div className="rounded-2xl shadow-md p-6 bg-green-50">
+      <BookOpen className="mb-2 text-green-600" />
+      <h3 className="font-semibold text-lg">{t.hadith}</h3>
+      <p className="text-sm">{lang === "ar" ? "ابحث في الأحاديث الصحيحة." : "Search authentic Hadith."}</p>
     </div>
-
-    <div class="weather-box" id="weatherBox" style="display: none;">
-      <h2 id="cityName"></h2>
-      <div id="icon"></div>
-      <p id="description"></p>
-      <p><strong id="tempLabel">درجة الحرارة:</strong> <span id="temp"></span>°C</p>
-      <p><strong id="humidityLabel">الرطوبة:</strong> <span id="humidity"></span>%</p>
-      <p><strong id="windLabel">الرياح:</strong> <span id="wind"></span> كم/س</p>
-      <p><strong id="pressureLabel">الضغط الجوي:</strong> <span id="pressure"></span> hPa</p>
+    <div className="rounded-2xl shadow-md p-6 bg-green-50">
+      <BookOpen className="mb-2 text-green-600" />
+      <h3 className="font-semibold text-lg">{t.azkar}</h3>
+      <p className="text-sm">{lang === "ar" ? "أذكار الصباح والمساء." : "Morning & Evening Azkar."}</p>
     </div>
+    <div className="rounded-2xl shadow-md p-6 bg-green-50">
+      <BookOpen className="mb-2 text-green-600" />
+      <h3 className="font-semibold text-lg">{t.dua}</h3>
+      <p className="text-sm">{lang === "ar" ? "أدعية مأثورة." : "Authentic Dua."}</p>
+    </div>
+  </section>
 
-    <button onclick="getLocationWeather()" id="locBtn">📍 الطقس في موقعي الحالي</button>
-  </div>
+  {/* Chatbot */}
+  <section className="p-6">
+    <h3 className="font-bold text-xl mb-4 flex items-center gap-2"><MessageCircle /> {t.bot}</h3>
+    <div className="border rounded-2xl p-4 max-w-xl mx-auto h-80 overflow-y-auto bg-gray-50">
+      {messages.map((msg, i) => (
+        <div key={i} className={`my-2 ${msg.from === "user" ? "text-right" : "text-left"}`}>
+          <span className={`inline-block px-3 py-2 rounded-2xl ${msg.from === "user" ? "bg-green-600 text-white" : "bg-gray-300 text-black"}`}>
+            {msg.text}
+          </span>
+        </div>
+      ))}
+    </div>
+    <div className="flex gap-2 mt-4 max-w-xl mx-auto">
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder={t.ask}
+        className="flex-1 border rounded-xl px-3 py-2"
+      />
+      <button onClick={handleSend} className="bg-green-600 text-white px-4 rounded-xl">➤</button>
+    </div>
+  </section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-  <script src="script.js"></script>
-</body>
-</html>
+  {/* Footer */}
+  <footer className="text-center py-6 mt-10 bg-green-600 text-white">
+    <p>© 2025 Hadith & Azkar | {lang === "ar" ? "جميع الحقوق محفوظة" : "All rights reserved"}</p>
+  </footer>
+</div>
+
+); }
+
